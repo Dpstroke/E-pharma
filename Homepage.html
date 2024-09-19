@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Home</title>
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to E-Pharmacy</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="Login Page.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <h2>Find Your Medicine</h2>
+            <form action="/search" method="GET" enctype="multipart/form-data">
+                <input type="text" name="query" placeholder="Search for medicines, health products..." required>
+                <input type="file" name="upload" id="upload">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <section class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="service-item">
+                    <h3>Prescription Refills</h3>
+                    <p>Quick and easy refills for your prescriptions.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Health Advice</h3>
+                    <p>Get expert advice from our certified pharmacists.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Online Consultation</h3>
+                    <p>Consult with a healthcare professional from the comfort of your home.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ABC Pharmacy. All rights reserved.</p>
+        </div>
+		 <script src="h-script.js"></script>
+    </footer>
+
+</body>
+</html>
