@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Home</title>
     <link rel="stylesheet" href="homestyle.css">
+    <style>
+        .cart-logo {
+            position: absolute; /* Position it absolutely */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .cart-logo img {
+            width: 50px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,7 +25,7 @@
             <h1>Welcome to E-Pharmacy</h1>
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="productlist.html">Products</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -20,10 +33,15 @@
                     <li><a href="register.html">Register</a></li>
                 </ul>
             </nav>
+
+            <!-- Cart Logo -->
+            <div class="cart-logo" onclick="window.location.href='cart.html'">
+                <img src="cart-icon.png" alt="Cart Logo"> <!-- Replace with the actual path to your cart logo image -->
+            </div>
         </div>
     </header>
 
-    <main>
+    <main>s
         <div class="search-container">
             <h2>Find Your Medicine</h2>
             <form action="/search" method="GET" enctype="multipart/form-data">
@@ -56,8 +74,9 @@
         <div class="container">
             <p>&copy; 2024 ABC Pharmacy. All rights reserved.</p>
         </div>
-		 <script src="h-script.js"></script>
+        <script src="h-script.js"></script>
     </footer>
 
 </body>
 </html>
+
