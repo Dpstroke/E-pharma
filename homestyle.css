@@ -8,8 +8,9 @@ body {
 
 header {
     background-color: #5cb85c;
-    padding: 20px 0;
+    padding: 20px 0; /* Adjust padding for header */
     color: white;
+    position: relative; /* Allow absolute positioning of child elements */
 }
 
 header h1 {
@@ -121,3 +122,65 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Styles for the cart logo */
+.cart-logo {
+    position: absolute; /* Position it absolutely */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    width: 50px; /* Width of the cart icon */
+    height: 50px; /* Height of the cart icon */
+    background-color: white; /* Background color for visibility */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border: 2px solid #5cb85c; /* Border to match the theme */
+}
+
+/* Create the cart icon using pseudo-elements */
+.cart-logo::before {
+    content: '';
+    width: 25px; /* Width of the cart */
+    height: 25px; /* Height of the cart */
+    border: 2px solid #5cb85c; /* Cart border color */
+    border-radius: 3px; /* Slightly rounded corners for the cart */
+    position: relative; /* Positioning context for inner elements */
+    background: #5cb85c; /* Fill color for the cart */
+}
+
+.cart-logo::after {
+    content: ''; /* Create a pseudo-element for cart handle */
+    width: 10px; /* Width of the handle */
+    height: 10px; /* Height of the handle */
+    background-color: white; /* Color for the handle */
+    position: absolute; /* Absolute positioning */
+    top: -5px; /* Position above the cart */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+}
+
+/* Add a wheel effect */
+.cart-logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5px; /* Left wheel */
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #5cb85c;
+}
+
+.cart-logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 5px; /* Right wheel */
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #5cb85c;
+}
+
