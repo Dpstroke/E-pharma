@@ -27,6 +27,48 @@ const products = [
         price: 12.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+    },
+    {
+        id: 5,
+        name: 'Product 5',
+        price: 12.99,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+    },
+    {
+        id: 6,
+        name: 'Product 6',
+        price: 12.99,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+    },
+    {
+        id: 7,
+        name: 'Product 7',
+        price: 12.99,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+    },
+    {
+        id: 8,
+        name: 'Product 8',
+        price: 12.99,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+    },
+    {
+        id: 9,
+        name: 'Product 9',
+        price: 12.99,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+    },
+    {
+        id: 10,
+        name: 'Product 10',
+        price: 12.99,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
     }
 ];
 
@@ -43,8 +85,13 @@ function displayProductDetails() {
             <h1>${product.name}</h1>
             <img src="${product.image}" alt="${product.name}">
             <p>Price: $${product.price}</p>
-            <p>${product.description}</p>
-            <button>Add to Cart</button>
+            <p>${product.description}</p> 
+            <a href="payment.html?id=${product.id}">
+                <button>Buy</button>
+            </a>
+            <a href="productlist.html?id=${product.id}">
+                    <button>Add to Cart</button>
+                </a>
         `;
         document.getElementById('product-details').innerHTML = productDetails;
     } else {
