@@ -81,19 +81,34 @@ p {
     font-size: 24px; /* Larger font size */
 }
 
-#checkout-btn {
-    background-color: #5cb85c; /* Green checkout button */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding */
+/* Style for the checkout button */
+.buy-now {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text color */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
-    font-size: 18px; /* Font size */
-    cursor: pointer; /* Pointer cursor */
+    padding: 12px 20px; /* Padding for top/bottom and left/right */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Aligns button properly */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-#checkout-btn:hover {
-    background-color: #4cae4c; /* Darker green on hover */
+/* Change the background color on hover */
+.buy-now:hover {
+    background-color: #45a049; /* Darker green on hover */
 }
+
+/* Optional: Add some responsive styling */
+@media (max-width: 600px) {
+    .buy-now {
+        width: 100%; /* Full width on small screens */
+        font-size: 18px; /* Slightly larger font on smaller screens */
+    }
+}
+
 
 /* Footer Styles */
 footer {
@@ -105,4 +120,3 @@ footer {
     bottom: 0; /* Stick to bottom */
     width: 100%; /* Full width */
 }
-
