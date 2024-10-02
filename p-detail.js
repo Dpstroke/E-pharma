@@ -5,70 +5,70 @@ const products = [
         name: 'Product 1',
         price: 10.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://betterlifeinc.store/cdn/shop/products/710VzOQME5L._AC_SL1500_1200x1200.jpg?v=1697570064'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmjE4c58zhDm6fGhMw3EYlWDZxxzJDkNPHzg&s'
     },
     {
         id: 2,
         name: 'Product 2',
         price: 14.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://cdn.dotpe.in/longtail/store-items/3153988/XBF0wm6C.jpeg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPwc4xssfbclN6frSPuF2KCyUasZ0YLxehfQ&s'
     },
     {
         id: 3,
         name: 'Product 3',
         price: 8.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://images-na.ssl-images-amazon.com/images/I/512Tb3wxPXL._AC_.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpYMJrH4RGJfrmtDDz2KIrtFnKmqtpQY5VZA&s'
     },
     {
         id: 4,
         name: 'Product 4',
         price: 12.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDb_yaKQsIvxOzvxcoNAUVN5VWv_7l4ot1sw&s'
     },
     {
         id: 5,
-        name: 'Product 5',
-        price: 12.99,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        name: 'Paracetamol',
+        price: 15.99,
+        description: 'Paracetamol Tablets belongs to Analgesics and Antipyretic Drugs, it is most common drug used in fever and cold.',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7yG1lwrSpM3U467ur9N5X6qWxRUgTzev5NQ&s '
     },
     {
         id: 6,
-        name: 'Product 6',
-        price: 12.99,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        name: 'Atorvastatin',
+        price: 17.99,
+        description: 'Atorvastatin is in a class of medications called HMG-CoA reductase inhibitors (statins). ',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTInITR-u1ExgUu0LbVcamKWMm46d3hL5CqrQ&s '
     },
     {
         id: 7,
-        name: 'Product 7',
-        price: 12.99,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        name: 'Metformin',
+        price: 21.99,
+        description: 'Metformin is an FDA-approved antidiabetic agent that manages high blood sugar levels in type 2 diabetes patients. ',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgWn6bzWoKNnvgYwH_SBNKahosJ46J80mIhA&s  '
     },
     {
         id: 8,
-        name: 'Product 8',
-        price: 12.99,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        name: 'Amoxicillin',
+        price: 20.99,
+        description: 'Amoxicillin is an aminopenicillin created by adding an extra amino group to penicillin to battle antibiotic resistance.',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRROZAnDcsaS0_0gx-96E_7YOXYE7-ybE0FzQ&s '
     },
     {
         id: 9,
-        name: 'Product 9',
-        price: 12.99,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        name: 'Ciprofloxacin ',
+        price: 9.99,
+        description: 'Ciprofloxacin is used to treat bacterial infections in many different parts of the body. ',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFc9lhZcLGmMb4qdSnajYFz_sJQ988wFChBQ&s '
     },
     {
         id: 10,
-        name: 'Product 10',
-        price: 12.99,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'http://ecx.images-amazon.com/images/I/51lYcR3qffL._SX300_QL70_.jpg'
+        name: 'Salbutamol ',
+        price: 1.99,
+        description: 'Salbutamol is used to relieve symptoms of asthma and chronic obstructive pulmonary disease',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfk2RKYmBF-_7blRD259pvFmfHTSf8r9qOPg&s '
     }
 ];
 
@@ -101,3 +101,5 @@ function displayProductDetails() {
 
 // Call the function when the page loads
 window.onload = displayProductDetails;
+
+
