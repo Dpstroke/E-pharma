@@ -28,6 +28,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         if (response.ok) {
             const result = await response.json();
             alert("Login successful!");
+            localStorage.setItem('token', result.token); // Store token in local storage
             window.location.href = "homepage.html"; // Redirect to homepage
         } else {
             const result = await response.json();
