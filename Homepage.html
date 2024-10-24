@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Home</title>
     <link rel="stylesheet" href="homestyle.css">
+    <!-- AOS for scroll animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -12,7 +14,7 @@
             <h1>Welcome to E-Pharmacy</h1>
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="productlist.html">Products</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -20,6 +22,8 @@
                     <li><a href="register.html">Register</a></li>
                 </ul>
             </nav>
+            <!-- Cart Logo -->
+            <div class="cart-logo" onclick="window.location.href='cart.html'"></div>
         </div>
     </header>
 
@@ -36,15 +40,15 @@
         <section class="services">
             <div class="container">
                 <h2>Our Services</h2>
-                <div class="service-item">
+                <div class="service-item" data-aos="fade-up">
                     <h3>Prescription Refills</h3>
                     <p>Quick and easy refills for your prescriptions.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
                     <h3>Health Advice</h3>
                     <p>Get expert advice from our certified pharmacists.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-aos="fade-up" data-aos-delay="400">
                     <h3>Online Consultation</h3>
                     <p>Consult with a healthcare professional from the comfort of your home.</p>
                 </div>
@@ -56,8 +60,18 @@
         <div class="container">
             <p>&copy; 2024 ABC Pharmacy. All rights reserved.</p>
         </div>
-		 <script src="h-script.js"></script>
     </footer>
 
+    <!-- GSAP for more advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <!-- AOS for scroll animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+
+        // GSAP animation for the cart logo
+        gsap.from(".cart-logo", { duration: 2, opacity: 0, y: -50 });
+    </script>
 </body>
 </html>
