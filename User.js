@@ -13,6 +13,66 @@ const contactSchema = new mongoose.Schema({
     }
 });
 
+// Define the payment schema
+const paymentSchema = new mongoose.Schema({
+    fullName: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    zip: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    cardName: {
+        type: String,
+        required: true
+    },
+    cardNumber: {
+        type: String,
+        required: true
+    },
+    expiryDate: {
+        type: String,
+        required: true
+    },
+    product: {
+        type: String,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    total: {
+        type: Number,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+});
+
 // Define the user schema
 const userSchema = new mongoose.Schema({
     username: {
@@ -29,6 +89,7 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     contacts: [contactSchema], // Embedding contacts as an array of sub-documents
+    payments: [paymentSchema], // Embedding payments as an array of sub-documents
     tokens: [ // Array to store JWT tokens
         {
             token: {

@@ -1,102 +1,148 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
-const User = require('../Models/User');  // Adjust the path if necessary
-const auth = require('../middleware/authentication');
+const User = require('../Models/User'); // Adjust the path if necessary
+const router = express.Router();
 
 router.use(express.json());
-// Registration route
 
+// Registration route
 router.post('/register', async (req, res) => {
     console.log(req.body); // Log incoming request body
 
     const { username, email, password, confirm_password } = req.body;
 
-    // Check if passwords match
     if (password !== confirm_password) {
         return res.status(400).json({ message: 'Passwords do not match' });
     }
 
     try {
-        // Check if the user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10); // Hash the password with 10 rounds of salt
-
-        // Create a new user with the hashed password
+        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             username,
             email,
-            password: hashedPassword // Use the hashed password here
+            password: hashedPassword
         });
 
-        await newUser.save(); // Save user to the database
-        console.log("User saved:", newUser); // Log saved user data
+        await newUser.save();
+        console.log("User saved:", newUser);
 
         res.status(201).json({ message: 'Registration successful!' });
     } catch (err) {
-        console.error('Error saving user:', err); // Log the error
+        console.error('Error saving user:', err);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
 // Login route
 router.post('/login', async (req, res) => {
+    console.log('Incoming login data:', req.body);
+
     const { username, password } = req.body;
-    console.log('Login attempt:', { username, password });
+
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Username and password are required' });
+    }
 
     try {
-        // Find the user by username
         const user = await User.findOne({ username });
-        console.log('User found:', user);
-        
         if (!user) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(404).json({ message: 'User not found' });
         }
 
-        // Compare the provided password with the hashed password
         const isMatch = await bcrypt.compare(password, user.password);
-        console.log('Password match:', isMatch);
-        
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        // Generate JWT token
-        const token = await user.generateAuthToken(); // Call the method from your schema to generate the token
+        // Generate a token
+        const token = await user.generateAuthToken();
 
-        // Store token in response header and return success
-        res.status(200).json({
-            message: 'Login successful!',
-            token, // Send the generated token back to the frontend
-            user: {
-                id: user._id,
-                username: user.username,
-                email: user.email
-            }
-        });
-    } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).json({ message: 'Server error' });
+        // Respond with the token
+        res.status(200).json({ message: 'Login successful!', token });
+    } catch (err) {
+        console.error('Error during login:', err);
+        res.status(500).json({ message: 'Server error during login' });
     }
 });
 
-router.post('/contact', auth, async (req, res) => {
-    const { name, email, phone, message } = req.body;
+// Contact route
+router.post('/contact', async (req, res) => {
+    try {
+        const {  name, email, phone, message } = req.body;
+        
+        // Validate that all required fields are provided
+        if ( !name || !email || !phone || !message) {
+            return res.status(400).json({ error: "All fields are required." });
+        }
+
+        // Find the user by username
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // Add contact data to the user's contacts array
+        user.contacts.push({ name, email, phone, message });
+
+        // Save the updated user document
+        await user.save();
+
+        res.status(201).json({ message: "Contact data saved successfully" });
+    } catch (error) {
+        console.error("Error processing contact data:", error);
+        res.status(500).json({ error: "Error saving contact data", details: error.message });
+    }
+});
+
+// Payment processing route
+router.post('/processpayment', async (req, res) => {
+    console.log('Incoming payment data:', req.body);
+
+    const {
+        fullName, email, address, city, state, zip, country,
+        cardName, cardNumber, expiryDate, product, quantity, total
+    } = req.body;
+
+    if (!fullName || !email || !address || !city || !state || !zip || !country || !cardName || !cardNumber || !expiryDate || !total) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
 
     try {
-        // Add the new contact message to the user's contacts array
-        req.user.contacts = req.user.contacts.concat({ name, email, phone, message });
-        await req.user.save(); // Save the updated user document
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
 
-        res.status(201).json({ message: 'Contact message saved successfully!' });
-    } catch (error) {
-        console.error('Error saving contact message:', error);
-        res.status(500).json({ message: 'Server error' });
+        const maskedCardNumber = '**** **** **** ' + cardNumber.slice(-4);
+        const paymentDetails = {
+            fullName,
+            email,
+            address,
+            city,
+            state,
+            zip,
+            country,
+            cardName,
+            cardNumber: maskedCardNumber,
+            expiryDate,
+            product: product || 'Unknown Product',
+            quantity: quantity || 1,
+            total: parseFloat(total)
+        };
+
+        user.payments.push(paymentDetails);
+        await user.save();
+        console.log('Payment saved for user:', user.email, 'with payment details:', paymentDetails);
+
+        res.status(200).json({ message: 'Payment processed successfully!' });
+    } catch (err) {
+        console.error('Error processing payment:', err);
+        res.status(500).json({ message: 'Server error during payment processing' });
     }
 });
 
